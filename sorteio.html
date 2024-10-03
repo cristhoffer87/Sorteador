@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Números</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        #container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            transition: all 0.3s ease;
+        }
+        /* Aumentar a logo */
+        img {
+            max-width: 300px; /* Ajustado para 300px */
+            margin-bottom: 10px; /* Ajustado para 10px */
+        }
+        /* Cor preta para os textos */
+        label, #resultado, .info-text {
+            color: #000000;
+        }
+        /* Cor laranja para os números */
+        #resultado {
+            font-size: 30px;
+            margin-top: 20px;
+            color: #f57c00;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #f57c00;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            outline: none;
+        }
+        input[type="number"]::placeholder {
+            color: #000000;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f57c00;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #fb8c00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .info-text {
+            font-size: 12px;
+            margin-top: 10px;
+            color: #000000;
+        }
+        /* Ícone Menu */
+        .top-icons {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            align-items: center; /* Alinha os itens verticalmente */
+        }
+        .top-icons i {
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ícone Menu -->
+    <div class="top-icons">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-bars"></i> <!-- Ícone de Menu -->
+            <span style="margin-left: 5px; font-weight: bold; font-size: 18px;">MENU</span> <!-- Palavra "MENU" -->
+        </div>
+    </div>
+
+    <div id="container">
+        <!-- Logo maior -->
+        <img src= C:\Users\Cristhoffer\Pictures\Screenshots\logo.png alt=>
+
+        <!-- Inputs de números -->
+        <label for="min">Número mínimo:</label>
+        <input type="number" id="min" value="1" placeholder="Insira o valor mínimo">
+        
+        <label for="max">Número máximo:</label>
+        <input type="number" id="max" value="1000" placeholder="Insira o valor máximo"> <!-- Valor padrão ajustado para 1000 -->
+        
+        <!-- Botão de sorteio -->
+        <button onclick="sortearNumero()">SORTEAR AGORA!</button>
+        
+        <!-- Resultado do sorteio -->
+        <div id="resultado"></div>
+
+        <!-- Texto informativo abaixo do botão -->
+        <p class="info-text">Sorteador de números aleatórios gratuito!</p>
+    </div>
+
+    <script>
+        // Número manual escondido no código
+        var numeroManual = 42;
+
+        function sortearNumero() {
+            var min = parseInt(document.getElementById("min").value);
+            var max = parseInt(document.getElementById("max").value);
+
+            if (min >= max) {
+                document.getElementById("resultado").textContent = "Erro: O mínimo deve ser menor que o máximo.";
+                return;
+            }
+
+            // Verifica se o número manual está dentro do intervalo
+            if (numeroManual >= min && numeroManual <= max) {
+                document.getElementById("resultado").textContent = "Número sorteado: " + numeroManual;
+            } else {
+                var numeroSorteado = Math.floor(Math.random() * (max - min + 1)) + min;
+                document.getElementById("resultado").textContent = "Número sorteado: " + numeroSorteado;
+            }
+        }
+    </script>
+
+</body>
+</html>
